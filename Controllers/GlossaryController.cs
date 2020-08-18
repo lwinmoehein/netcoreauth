@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Glossary.Controllers
 {
@@ -52,6 +53,8 @@ namespace Glossary.Controllers
         }
 
         [HttpPost]
+        [Authorize]
+
         public ActionResult Post(GlossaryItem glossaryItem)
         {
             var existingGlossaryItem = Glossary.Find(item =>
@@ -70,6 +73,8 @@ namespace Glossary.Controllers
         }
 
         [HttpPut]
+        [Authorize]
+
             public ActionResult Put(GlossaryItem glossaryItem)
             {
                 var existingGlossaryItem = Glossary.Find(item =>
@@ -87,6 +92,8 @@ namespace Glossary.Controllers
 
         [HttpDelete]
         [Route("{term}")]
+        [Authorize]
+
         public ActionResult Delete(string term)
         {
             var glossaryItem = Glossary.Find(item =>
