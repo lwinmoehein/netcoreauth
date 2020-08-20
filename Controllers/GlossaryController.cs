@@ -36,7 +36,14 @@ namespace Glossary.Controllers
             return Ok(Glossary);
         }
 
-          [HttpGet]
+        [HttpGet]
+        [Authorize]
+        [Route("gettoken")]
+        public ActionResult<GlossaryItem> getToken(){
+            return Ok("hi");
+        }
+
+        [HttpGet]
         [Route("{term}")]
         public ActionResult<GlossaryItem> Get(string term)
         {
